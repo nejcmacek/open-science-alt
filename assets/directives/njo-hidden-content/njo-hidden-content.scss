@@ -1,0 +1,25 @@
+﻿njo-hidden-content {
+	overflow-y: hidden;
+	display: block;
+	max-height: 0;
+
+	&.njo-opening, &.njo-closing {
+		-moz-transition: max-height .3s;
+		-o-transition: max-height .3s;
+		-webkit-transition: max-height .3s;
+		transition: max-height .3s;
+	}
+
+	&.njo-closed:not(.njo-closing) {
+		display: none;
+	}
+
+	> njo-content {
+		display: block; //define display type
+		display: none;
+	}
+
+	&.njo-opened > njo-content, &.njo-closing > njo-content {
+		display: block;
+	}
+}

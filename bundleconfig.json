@@ -1,0 +1,68 @@
+[
+  {
+    "outputFileName": "assets/material-icons/style.css",
+    "inputFiles": [
+      "assets/material-icons/style.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/raleway/style.css",
+    "inputFiles": [
+      "assets/raleway/style.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/directives/njo-hidden-content/njo-hidden-content.js",
+    "inputFiles": [
+      "assets/directives/njo-hidden-content/njo-hidden-content.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/directives/njo-hidden-menu/njo-hidden-menu.js",
+    "inputFiles": [
+      "assets/directives/njo-hidden-menu/njo-hidden-menu.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/directives/njo-loading/njo-loading.js",
+    "inputFiles": [
+      "assets/directives/njo-loading/njo-loading.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/data-downloader.js",
+    "inputFiles": [
+      "scripts/data-downloader.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/filter-apply.js",
+    "inputFiles": [
+      "scripts/filter-apply.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/item-manager.js",
+    "inputFiles": [
+      "scripts/item-manager.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/item-retriever.js",
+    "inputFiles": [
+      "scripts/item-retriever.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/modules.js",
+    "inputFiles": [
+      "scripts/modules.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/display-ctrl.js",
+    "inputFiles": [
+      "scripts/display-ctrl.js"
+    ]
+  }
+]

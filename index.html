@@ -1,0 +1,600 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="sl">
+
+
+<head>
+
+
+	<!-- Basic -->
+	<meta charset="utf-8" />
+	<meta lang="sl" />
+
+	<!-- Title & Meta -->
+	<title>Nejc Maček :: Osnove svetovnega spletna :: OpenScience</title>
+	<meta name="author" content="Nejc Maček <macek.nejc@gmail.com, nejc.macek@student.um.si>" />
+	<meta name="description" content="Projekt pri predmetu Osnove svetovnega spleta - Iskalnik OpenScience" />
+	<meta name="keywords" content="nejc, maček, oss, osnove svetovnega spleta, projekt, openscience, open, science" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<link type="text/plain" rel="author" href="humans.txt" />
+	<link type="image/x-icon" rel="icon" href="favicon.ico" />
+
+	<!-- Angular, Angular Material & Other Dependencies [SELFHOST] -->
+	<!--<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-material/angular-material.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-messages/angular-messages.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="node_modules/angular-material/angular-material.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/material-icons/style.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/raleway/style.min.css" />-->
+
+	<!-- Angular, Angular Material & Other Dependencies [ONLINE] -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc6/angular-material.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc6/angular-material.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,500,400,700" />
+
+	<!-- OpenScience Dependancies [UNMINIFIED] -->
+	<!--<script type="text/javascript" src="scripts/modules.js"></script>
+	<script type="text/javascript" src="scripts/data-downloader.js"></script>
+	<script type="text/javascript" src="scripts/item-retriever.js"></script>
+	<script type="text/javascript" src="scripts/item-manager.js"></script>
+	<script type="text/javascript" src="scripts/display-ctrl.js"></script>
+	<script type="text/javascript" src="assets/directives/njo-hidden-menu/njo-hidden-menu.js"></script>
+	<script type="text/javascript" src="assets/directives/njo-hidden-content/njo-hidden-content.js"></script>
+	<script type="text/javascript" src="assets/directives/njo-loading/njo-loading.js"></script>
+	<link type="text/css" rel="stylesheet" href="assets/directives/njo-hidden-menu/njo-hidden-menu.css" />
+	<link type="text/css" rel="stylesheet" href="assets/directives/njo-hidden-content/njo-hidden-content.css" />
+	<link type="text/css" rel="stylesheet" href="assets/directives/njo-loading/njo-loading.css" />
+	<link type="text/css" rel="stylesheet" href="style.css" />-->
+
+	<!-- OpenScience Dependancies [MINIFIED] -->
+	<script type="text/javascript" src="scripts/modules.min.js"></script>
+	<script type="text/javascript" src="scripts/data-downloader.min.js"></script>
+	<script type="text/javascript" src="scripts/item-retriever.min.js"></script>
+	<script type="text/javascript" src="scripts/item-manager.min.js"></script>
+	<script type="text/javascript" src="scripts/display-ctrl.min.js"></script>
+	<script type="text/javascript" src="assets/directives/njo-hidden-menu/njo-hidden-menu.min.js"></script>
+	<script type="text/javascript" src="assets/directives/njo-hidden-content/njo-hidden-content.min.js"></script>
+	<script type="text/javascript" src="assets/directives/njo-loading/njo-loading.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="assets/directives/njo-hidden-menu/njo-hidden-menu.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/directives/njo-hidden-content/njo-hidden-content.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/directives/njo-loading/njo-loading.min.css" />
+	<link type="text/css" rel="stylesheet" href="style.min.css" />
+
+
+</head>
+
+
+<body ng-app="openScience" ng-controller="displayCtrl">
+
+
+	<div id="toolbar">
+		<div class="decor-line-1"></div>
+		<div class="decor-line-2"></div>
+	</div>
+
+
+	<div id="header">
+		<div class="container">
+			<div class="wrapper">
+				<div class="title-holder">
+					<div class="title">Open<b>Science</b> Iskalnik</div>
+					<div class="subtitle">Brskajte po univerzitetnem gradivu s področja celotne Slovenije!</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="body">
+		<div class="decor-line-2"></div>
+		<div class="decor-line-1 float"></div>
+		<div class="wrapper">
+
+			<!-- Input -->
+			<md-content class="input">
+				<md-tabs md-dynamic-height md-selected="tabsSelected" class="md-primary">
+					<md-tab>
+						<md-tab-label><md-icon>search</md-icon>Navadno iskanje</md-tab-label>
+						<md-tab-body>
+							<md-content class="md-padding" style="padding-top: 0;">
+								<form name="inputFormSimple" ng-submit="inputSubmitSimple(true)">
+									<div layout="row">
+										<md-input-container class="stretch">
+											<label>Iskalni niz</label>
+											<input ng-model="inputSimple" ng-pattern="/^[^:;]+$/" ng-trim="true" name="queryInput" required ng-change="inputChangeSimple()" />
+											<div ng-messages="inputFormSimple.queryInput.$error" role="alert" multiple>
+												<div ng-message="required">Prosimo, vnesite iskalni niz.</div>
+												<div ng-message="pattern">iskalni niz ne sme vsebovati dvopičja ali podpičja.</div>
+											</div>
+										</md-input-container>
+										<div>
+											<md-button class="md-raised" ng-click="inputSubmitSimple(true)">
+												<md-icon>search</md-icon>Iskanje
+											</md-button>
+										</div>
+									</div>
+								</form>
+							</md-content>
+						</md-tab-body>
+					</md-tab>
+
+					<md-tab>
+						<md-tab-label><md-icon>youtube_searched_for</md-icon>Napredno iskanje</md-tab-label>
+						<md-tab-body>
+							<form name="inputFormComplex" ng-submit="inputSubmitComplex(true)">
+								<njo-hidden-menu njo-position="top" visible="false" color="prLight">
+									<div layout="row">
+										<md-input-container flex>
+											<label>Jezik</label>
+											<md-select ng-model="this.$parent.$parent.inputLang" ng-change="inputChangeComplex()">
+												<md-option value="slv">Slovenski jezik</md-option>
+												<md-option value="eng">Angleški jezik</md-option>
+												<md-option value="hrv">Hrvaški jezik</md-option>
+												<md-option value="deu">Nemški jezik</md-option>
+												<!--<md-option value="srp">Srbski jezik (cirilica)</md-option>-->
+												<md-option value="srp">Srbski jezik</md-option>
+												<md-option value="hun">Madžarski jezik</md-option>
+												<!--<md-option value="deu">Nemški jezik (Avstrija)</md-option>-->
+												<md-option value="ita">Italijanski jezik</md-option>
+												<md-option value="fra">Francoski jezik</md-option>
+												<md-option value="---">Neznan jezik</md-option>
+												<md-option value="pol">Polski jezik</md-option>
+												<md-option value="ces">Češki jezik</md-option>
+												<md-option value="slk">Slovaški jezik</md-option>
+												<md-option value="sl">Slovenski jezik</md-option>
+												<md-option value="en">Angleški jezik</md-option>
+												<md-option value="-1" selected>Vse</md-option>
+											</md-select>
+										</md-input-container>
+										<md-input-container flex>
+											<label>Vrsta gradiva</label>
+											<md-select ng-model="this.$parent.$parent.inputSort" ng-change="inputChangeComplex()">
+												<md-option value="0">Ni določena</md-option>
+												<md-option value="101">Izvirni znanstveni članek</md-option>
+												<md-option value="102">Pregledni znanstveni članek</md-option>
+												<md-option value="103">Kratki znanstveni prispevek</md-option>
+												<md-option value="104">Strokovni članek</md-option>
+												<md-option value="105">Poljudni članek</md-option>
+												<md-option value="106">Objavljeni znanstveni prispevek na konferenci (vabljeno predavanje)</md-option>
+												<md-option value="107">Objavljeni strokovni prispevek na konferenci (vabljeno predavanje)</md-option>
+												<md-option value="108">Objavljeni znanstveni prispevek na konferenci</md-option>
+												<md-option value="109">Objavljeni strokovni prispevek na konferenci</md-option>
+												<md-option value="110">Objavljeni povzetek znanstvenega prispevka na konferenci (vabljeno predavanje)</md-option>
+												<md-option value="112">Objavljeni povzetek znanstvenega prispevka na konferenci</md-option>
+												<md-option value="113">Objavljeni povzetek strokovnega prispevka na konferenci</md-option>
+												<md-option value="116">Samostojni znanstveni sestavek ali poglavje v monografski publikaciji</md-option>
+												<md-option value="117">Samostojni strokovni sestavek ali poglavje v monografski publikaciji</md-option>
+												<md-option value="118">Geslo – sestavek v enciklopediji, leksikonu, slovarju...</md-option>
+												<md-option value="119">Recenzija, prikaz knjige, kritika</md-option>
+												<md-option value="120">Predgovor, spremna beseda</md-option>
+												<md-option value="121">Polemika, diskusijski prispevek</md-option>
+												<md-option value="122">Intervju</md-option>
+												<md-option value="123">Umetniški sestavek</md-option>
+												<md-option value="124">Bibliografija, kazalo ipd.</md-option>
+												<md-option value="125">Drugi članki ali sestavki</md-option>
+												<md-option value="201">Znanstvena monografija</md-option>
+												<md-option value="202">Strokovna monografija</md-option>
+												<md-option value="203">Univerzitetni, visokošolski ali višješolski učbenik z recenzijo</md-option>
+												<md-option value="204">Srednješolski, osnovnošolski ali drugi učbenik z recenzijo</md-option>
+												<md-option value="205">Video in druga učna gradiva</md-option>
+												<md-option value="206">Enciklopedija, slovar, leksikon, priročnik, atlas, zemljevid</md-option>
+												<md-option value="207">Bibliografija</md-option>
+												<md-option value="208">Doktorska disertacija</md-option>
+												<md-option value="209">Magistrsko delo</md-option>
+												<md-option value="210">Specialistično delo</md-option>
+												<md-option value="211">Diplomsko delo</md-option>
+												<md-option value="212">Končno poročilo o rezultatih raziskav</md-option>
+												<md-option value="213">Elaborat, predštudija, študija</md-option>
+												<md-option value="214">Projektna dokumentacija (idejni projekt, izvedbeni projekt)</md-option>
+												<md-option value="215">Izvedensko mnenje, arbitražna odločba</md-option>
+												<md-option value="216">Umetniško delo</md-option>
+												<md-option value="217">Katalog razstave</md-option>
+												<md-option value="218">Raziskovalni ali dokumentarni film, zvočni ali video posnetek</md-option>
+												<md-option value="219">Radijska ali televizijska oddaja</md-option>
+												<md-option value="220">Raziskovalni podatki ali korpusi</md-option>
+												<md-option value="221">Programska oprema</md-option>
+												<md-option value="222">Nova sorta</md-option>
+												<md-option value="223">Patentna prijava</md-option>
+												<md-option value="224">Patent</md-option>
+												<md-option value="225">Druge monografije in druga zaključena dela</md-option>
+												<md-option value="230">Zbornik strokovnih ali nerecenziranih znanstvenih prispevkov na konferenci</md-option>
+												<md-option value="231">Zbornik recenziranih znanstvenih prispevkov na mednarodni ali tuji konferenci</md-option>
+												<md-option value="232">Zbornik recenziranih znanstvenih prispevkov na domači konferenci</md-option>
+												<md-option value="310">Umetniška poustvaritev</md-option>
+												<md-option value="311">Radijski ali TV dogodek</md-option>
+												<md-option value="312">Razstava</md-option>
+												<md-option value="313">Organiziranje znanstvenih in strokovnih sestankov</md-option>
+												<md-option value="314">Predavanje na tuji univerzi</md-option>
+												<md-option value="315">Prispevek na konferenci brez natisa</md-option>
+												<md-option value="316">Vabljeno predavanje na konferenci brez natisa</md-option>
+												<md-option value="320">Druga dela</md-option>
+												<md-option value="325">Druga izvedena dela</md-option>
+												<md-option value="-1" selected>Vse</md-option>
+											</md-select>
+										</md-input-container>
+									</div>
+								</njo-hidden-menu>
+								<md-content class="md-padding input-complex-overflow-fix">
+									<div layout="column" layout-gt-xs="row" ng-repeat="field in inputFields" class="input-complex">
+										<md-input-container>
+											<label>Selektor</label>
+											<md-select ng-model="inputFields[$index].operator" ng-change="inputChangeComplex()">
+												<md-option ng-repeat="operator in inputOperators" value="{{operator.id}}">{{operator.name}}</md-option>
+											</md-select>
+										</md-input-container>
+										<md-input-container style="width: 100%;">
+											<label>Iskalni niz</label>
+											<input ng-model="inputFields[$index].input" ng-pattern="/^[^:;]+$/" ng-trim="true" name="query-{{$index}}" ng-change="inputChangeComplex()" />
+											<div ng-messages="inputFormComplex['query-' + $index].$error" role="alert">
+												<div ng-message="pattern">iskalni niz ne sme vsebovati dvopičja ali podpičja.</div>
+											</div>
+										</md-input-container>
+										<div layout="row" class="stretch">
+											<md-input-container style="min-width: 140px;" flex>
+												<label>Išči po</label>
+												<md-select ng-model="inputFields[$index].type" ng-change="inputChangeComplex()">
+													<md-option ng-repeat="type in inputTypes" value="{{type.id}}">
+														{{type.name}}
+													</md-option>
+												</md-select>
+											</md-input-container>
+											<md-input-container>
+												<md-button class="md-icon-button" ng-disabled="inputFields.length == 1" ng-click="inputRemove($index); inputChangeComplex(false);" md-block>
+													<md-icon>close</md-icon>
+												</md-button>
+											</md-input-container>
+										</div>
+									</div>
+									<div class="input-error" ng-show="inputError">Vsaj eno polje mora biti izpolnjeno.</div>
+									<div layout="row" layout-align="end center">
+										<md-button ng-click="inputAdd()">
+											<md-icon>add</md-icon>Dodaj pogoj
+										</md-button>
+										<md-button class="md-raised" ng-click="inputSubmitComplex(true)">
+											<md-icon>youtube_searched_for</md-icon>Iskanje
+										</md-button>
+									</div>
+								</md-content>
+							</form>
+						</md-tab-body>
+					</md-tab>
+
+					<md-tab>
+						<md-tab-label>OpenScience.si</md-tab-label>
+						<md-tab-body>
+							<md-content class="md-padding center" layout-align="center center" layout-wrap>
+								<p>To spletno stran je ustvaril <a href="mailto:macek.nejc@gmil.com">Nejc Maček</a>.</p>
+								<p>Izvorni brskalnik lahko najdete na spletni strani <code>openscience.si</code>.</p>
+								<a target="_blank" href="http://openscience.si">
+									<md-button class="md-raised"><i class="fa fa-globe"></i>Obišči stran</md-button>
+								</a>
+							</md-content>
+						</md-tab-body>
+					</md-tab>
+				</md-tabs>
+			</md-content>
+
+
+			<!-- Display -->
+			<md-content class="display">
+
+
+				<!-- Filter -->
+				<div class="filter-holder" ng-show="!!retr">
+					<div class="filter-switch-holder" ng-show="retr && retr.status.finished">
+						<md-list-item class="filter-switch">
+							<md-icon>filter_list</md-icon>
+							<p>Filter</p>
+							<md-switch class="md-secondary" ng-model="opened"></md-switch>
+						</md-list-item>
+					</div>
+					<njo-hidden-content timeout="300" opened="opened" class="filter-switch-container">
+						<div class="filter" ng-class="{ 'operator-expanded': filterOperatorExpanded }" ng-show="retr && retr.status.finished">
+							<div class="container">
+								<njo-hidden-menu njo-position="left" class="operators" visible="filterOperatorExpanded" color="prDark">
+									<div class="hidden-annotation">Napredni filter</div>
+									<div ng-show="retr && retr.filter.keywords.length > 0">
+										<div class="separator" layout="row" layout-align="space-around center">
+											<div ng-click="filterSetOperator(0, 0)">ALI</div>
+											<div ng-click="filterSetOperator(0, 1)">IN</div>
+											<div ng-click="filterSetOperator(0, 2)">NE</div>
+										</div>
+										<md-radio-group class="item" layout="row" layout-align="space-around center" ng-repeat="item in retr.filterCounter.keywords" ng-model="retr.filter.keywords[$index].operator" ng-change="updateFilter()">
+											<md-radio-button aria-label="k-{{$index}}-0" ng-value="0"></md-radio-button>
+											<md-radio-button aria-label="k-{{$index}}-0" ng-value="1"></md-radio-button>
+											<md-radio-button aria-label="k-{{$index}}-0" ng-value="2"></md-radio-button>
+										</md-radio-group>
+									</div>
+									<div ng-show="retr && retr.filter.year.length > 0">
+										<div class="separator" layout="row" layout-align="space-around center">
+											<div ng-click="filterSetOperator(1, 0)">ALI</div>
+											<div ng-click="filterSetOperator(1, 1)">IN</div>
+											<div ng-click="filterSetOperator(1, 2)">NE</div>
+										</div>
+										<md-radio-group class="item" layout="row" layout-align="space-around center" ng-repeat="item in retr.filterCounter.year" ng-model="retr.filter.year[$index].operator" ng-change="updateFilter()">
+											<md-radio-button aria-label="y-{{$index}}-0" ng-value="0"></md-radio-button>
+											<md-radio-button aria-label="y-{{$index}}-0" ng-value="1"></md-radio-button>
+											<md-radio-button aria-label="y-{{$index}}-0" ng-value="2"></md-radio-button>
+										</md-radio-group>
+									</div>
+									<div ng-show="retr && retr.filter.authors.length > 0">
+										<div class="separator" layout="row" layout-align="space-around center">
+											<div ng-click="filterSetOperator(2, 0)">ALI</div>
+											<div ng-click="filterSetOperator(2, 1)">IN</div>
+											<div ng-click="filterSetOperator(2, 2)">NE</div>
+										</div>
+										<md-radio-group class="item" layout="row" layout-align="space-around center" ng-repeat="item in retr.filterCounter.authors" ng-model="retr.filter.authors[$index].operator" ng-change="updateFilter()">
+											<md-radio-button aria-label="a-{{$index}}-0" ng-value="0"></md-radio-button>
+											<md-radio-button aria-label="a-{{$index}}-0" ng-value="1"></md-radio-button>
+											<md-radio-button aria-label="a-{{$index}}-0" ng-value="2"></md-radio-button>
+										</md-radio-group>
+									</div>
+									<div ng-show="retr && retr.filter.repository.length > 0">
+										<div class="separator" layout="row" layout-align="space-around center">
+											<div ng-click="filterSetOperator(3, 0)">ALI</div>
+											<div ng-click="filterSetOperator(3, 1)">IN</div>
+											<div ng-click="filterSetOperator(3, 2)">NE</div>
+										</div>
+										<md-radio-group class="item" layout="row" layout-align="space-around center" ng-repeat="item in retr.filterCounter.repository" ng-model="retr.filter.repository[$index].operator" ng-change="updateFilter()">
+											<md-radio-button aria-label="r-{{$index}}-0" ng-value="0"></md-radio-button>
+											<md-radio-button aria-label="r-{{$index}}-0" ng-value="1"></md-radio-button>
+											<md-radio-button aria-label="r-{{$index}}-0" ng-value="2"></md-radio-button>
+										</md-radio-group>
+									</div>
+									<div ng-show="retr && retr.filter.typology.length > 0">
+										<div class="separator" layout="row" layout-align="space-around center">
+											<div ng-click="filterSetOperator(4, 0)">ALI</div>
+											<div ng-click="filterSetOperator(4, 1)">IN</div>
+											<div ng-click="filterSetOperator(4, 2)">NE</div>
+										</div>
+										<md-radio-group class="item" layout="row" layout-align="space-around center" ng-repeat="item in retr.filterCounter.typology" ng-model="retr.filter.typology[$index].operator" ng-change="updateFilter()">
+											<md-radio-button aria-label="t-{{$index}}-0" ng-value="0"></md-radio-button>
+											<md-radio-button aria-label="t-{{$index}}-0" ng-value="1"></md-radio-button>
+											<md-radio-button aria-label="t-{{$index}}-0" ng-value="2"></md-radio-button>
+										</md-radio-group>
+									</div>
+									<div ng-show="retr && retr.filter.lang.length > 0">
+										<div class="separator" layout="row" layout-align="space-around center">
+											<div ng-click="filterSetOperator(5, 0)">ALI</div>
+											<div ng-click="filterSetOperator(5, 1)">IN</div>
+											<div ng-click="filterSetOperator(5, 2)">NE</div>
+										</div>
+										<md-radio-group class="item" layout="row" layout-align="space-around center" ng-repeat="item in retr.filterCounter.lang" ng-model="retr.filter.lang[$index].operator" ng-change="updateFilter()">
+											<md-radio-button aria-label="l-{{$index}}-0" ng-value="0"></md-radio-button>
+											<md-radio-button aria-label="l-{{$index}}-0" ng-value="1"></md-radio-button>
+											<md-radio-button aria-label="l-{{$index}}-0" ng-value="2"></md-radio-button>
+										</md-radio-group>
+									</div>
+								</njo-hidden-menu>
+								<div class="values">
+									<div layout="row" layout-align="space-between center" class="filter-top stretch">
+										<md-input-container style="min-width: 164px;" flex>
+											<label>Rezultatov na stran</label>
+											<input ng-model="this.$parent.$parent.perPage" type="number" step="5" min="5" max="100" ng-change="refreshRetriever()">
+										</md-input-container>
+										<md-input-container flex style="text-align: right;">
+											<div style="width: 52px; float: right;">
+												<md-button class="md-icon-button" ng-click="retr.resetFilter()">
+													<md-icon>close</md-icon>
+												</md-button>
+												<md-tooltip md-direction="left">Počisti filter</md-tooltip>
+											</div>
+										</md-input-container>
+									</div>
+									<div>
+										<div ng-show="retr && retr.filter.keywords.length > 0">
+											<h2>Ključne besede</h2>
+											<div class="item" ng-repeat="item in retr.filterCounter.keywords">
+												<md-checkbox ng-model="retr.filter.keywords[$index].selected" ng-change="updateFilter()">
+													<div class="checkbox-label">
+														<div class="count" title="Število zadetkov">{{item.count}}</div>
+														<div class="label" title="{{item.value}}">{{item.value}}</div>
+													</div>
+												</md-checkbox>
+											</div>
+										</div>
+										<div ng-show="retr && retr.filter.year.length > 0">
+											<h2>Leto izdaje</h2>
+											<div class="item" ng-repeat="item in retr.filterCounter.year">
+												<md-checkbox ng-model="retr.filter.year[$index].selected" ng-change="updateFilter()">
+													<div class="checkbox-label">
+														<div class="count" title="Število zadetkov">{{item.count}}</div>
+														<div class="label" title="{{item.value}}">{{item.value}}</div>
+													</div>
+												</md-checkbox>
+											</div>
+										</div>
+										<div ng-show="retr && retr.filter.authors.length > 0">
+											<h2>Avtorji</h2>
+											<div class="item" ng-repeat="item in retr.filterCounter.authors">
+												<md-checkbox ng-model="retr.filter.authors[$index].selected" ng-change="updateFilter()">
+													<div class="checkbox-label">
+														<div class="count" title="Število zadetkov">{{item.count}}</div>
+														<div class="label" title="{{item.value}}">{{item.value}}</div>
+													</div>
+												</md-checkbox>
+											</div>
+										</div>
+										<div ng-show="retr && retr.filter.repository.length > 0">
+											<h2>Repozitoriji</h2>
+											<div class="item" ng-repeat="item in retr.filterCounter.repository">
+												<md-checkbox ng-model="retr.filter.repository[$index].selected" ng-change="updateFilter()">
+													<div class="checkbox-label">
+														<div class="count" title="Število zadetkov">{{item.count}}</div>
+														<div class="label" title="{{item.value}}">{{item.value}}</div>
+													</div>
+												</md-checkbox>
+											</div>
+										</div>
+										<div ng-show="retr && retr.filter.typology.length > 0">
+											<h2>Tipologija</h2>
+											<div class="item" ng-repeat="item in retr.filterCounter.typology">
+												<md-checkbox ng-model="retr.filter.typology[$index].selected" ng-change="updateFilter()">
+													<div class="checkbox-label">
+														<div class="count" title="Število zadetkov">{{item.count}}</div>
+														<div class="label" title="{{item.value}}">{{item.value}}</div>
+													</div>
+												</md-checkbox>
+											</div>
+										</div>
+										<div ng-show="retr && retr.filter.lang.length > 0">
+											<h2>Jezik</h2>
+											<div class="item" ng-repeat="item in retr.filterCounter.lang">
+												<md-checkbox ng-model="retr.filter.lang[$index].selected" ng-change="updateFilter()">
+													<div class="checkbox-label">
+														<div class="count" title="Število zadetkov">{{item.count}}</div>
+														<div class="label" title="{{item.value}}">{{item.value}}</div>
+													</div>
+												</md-checkbox>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="update-overlay" ng-show="retr && retr.status.finished && retr.status.updatingFilter"></div>
+							</div>
+						</div>
+						<div class="filter-switch-holder" ng-show="retr && retr.status.finished">
+							<md-list-item class="filter-switch">
+								<md-icon>filter_list</md-icon>
+								<p>Filter</p>
+								<md-switch class="md-secondary" ng-model="this.$parent.$parent.opened"></md-switch>
+							</md-list-item>
+						</div>
+					</njo-hidden-content>
+				</div>
+
+
+				<!-- Results -->
+				<div class="results">
+					<div class="count" ng-show="retr && retr.status.finished && pgn.any">
+						Število zadetkov: {{retr.filtered.length}}
+					</div>
+					<div ng-show="retr && retr.status.finished && pgn.any" layout="row" layout-align="space-around center" class="pagination">
+						<div>
+							<md-button ng-show="retr && (pgn.max >= 2)" ng-disabled="retr && pgn.current == 0" class="md-icon-button" ng-click="pgn.toFirst()">
+								<md-icon>skip_previous</md-icon>
+							</md-button>
+							<md-button ng-show="retr && (pgn.max >= 1)" ng-disabled="retr && pgn.current == 0" class="md-icon-button" ng-click="pgn.toPrevious()">
+								<md-icon>fast_rewind</md-icon>
+							</md-button>
+						</div>
+						<md-select aria-label="pagination-top" ng-model="pgn.current" ng-if="retr" ng-change="pgn.retry()" ng-disabled="pgn.max == 0">
+							<md-option ng-repeat="page in pgn.pages" ng-value="{{$index}}">Stran {{$index + 1}}/{{pgn.pages.length}}</md-option>
+						</md-select>
+						<div>
+							<md-button ng-show="retr && (pgn.max >= 1)" ng-disabled="retr && pgn.current == pgn.max" class="md-icon-button" ng-click="pgn.toNext()">
+								<md-icon>fast_forward</md-icon>
+							</md-button>
+							<md-button ng-show="retr && (pgn.max >= 2)" ng-disabled="retr && pgn.current == pgn.max" class="md-icon-button" ng-click="pgn.toLast()">
+								<md-icon>skip_next</md-icon>
+							</md-button>
+						</div>
+					</div>
+					<div ng-show="retr && ((retr.status.error && !retr.status.aborted) || (pgn.pages[pgn.current].error && !pgn.pages[pgn.current].aborted))" class="center info error">
+						<h1>Delili smo z nič!</h1>
+						<p class="center">
+							Pri izvajanju iskalne poizvedbe je prišlo do napake.
+						</p>
+						<md-button class="md-raised" ng-click="retr.retry()">
+							<md-icon>refresh</md-icon>Poskusi ponovno
+						</md-button>
+					</div>
+					<div ng-show="retr && (retr.status.aborted || pgn.pages[pgn.current].aborted)" class="center info aborted">
+						<h1>Dovolj!</h1>
+						<p class="center">
+							Iskanje prekinjeno.
+						</p>
+						<md-button class="md-raised" ng-click="retr.retry()">
+							<md-icon>refresh</md-icon>Poskusi ponovno
+						</md-button>
+					</div>
+					<div ng-show="retr && retr.status.finished && !pgn.any" class="center info empty">
+						<h1>Ni, ni!</h1>
+						<p class="center">
+							Noben rezultat se ne ujema z iskalno poizvedbo.
+						</p>
+					</div>
+					<div ng-show="retr && (retr.status.running || pgn.pages[pgn.current].downloading)" class="center info running">
+						<njo-loading></njo-loading>
+						<div class="row-button">
+							Iskanje v teku.
+							<md-button class="md-raised" ng-click="retr.abort()">
+								<md-icon>block</md-icon>Prekini
+							</md-button>
+						</div>
+					</div>
+					<div ng-show="retr && retr.status.finished && pgn.pages[pgn.current].downloaded" class="items">
+						<div ng-repeat="item in pgn.pages[pgn.current].items track by item.id" class="item">
+							<div class="container">
+								<a href="{{item.details.url}}" target="_blank"><h2 class="title">{{item.details.title}}</h2></a>
+								<div class="authors">
+									<span ng-repeat="author in item.authors track by $index"><a href="{{getAuthorLink(author)}}" ng-click="searchAuthor(author, $event)">{{author}}</a></span>
+								</div>
+								<div>{{item.typology}}</div>
+								<div class="description">{{item.details.description}}</div>
+								<div class="keywords">
+									Oznake:&nbsp;
+									<span ng-repeat="keyword in item.keywords track by $index"><a href="{{getKeywordLink(keyword)}}" ng-click="searchKeyword(keyword, $event)">{{keyword}}</a></span>
+								</div>
+								<div class="dateloc">
+									{{item.details.org}}, {{item.details.loc}} {{item.year}}
+								</div>
+							</div>
+							<div class="separator"></div>
+						</div>
+					</div>
+					<div ng-show="retr && retr.status.finished && pgn.pages[pgn.current].downloaded && pgn.any" layout="row" layout-align="space-around center" class="pagination">
+						<div>
+							<md-button ng-if="retr && (pgn.max >= 2)" ng-disabled="retr && pgn.current == 0" class="md-icon-button" ng-click="pgn.toFirst()">
+								<md-icon>skip_previous</md-icon>
+							</md-button>
+							<md-button ng-if="retr && (pgn.max >= 1)" ng-disabled="retr && pgn.current == 0" class="md-icon-button" ng-click="pgn.toPrevious()">
+								<md-icon>fast_rewind</md-icon>
+							</md-button>
+						</div>
+						<md-select aria-label="pagination-bottom" ng-model="pgn.current" ng-if="retr" ng-change="pgn.retry()" ng-disabled="pgn.max == 0">
+							<md-option ng-repeat="page in pgn.pages" ng-value="{{$index}}">Stran {{$index + 1}}/{{pgn.pages.length}}</md-option>
+						</md-select>
+						<div>
+							<md-button ng-if="retr && (pgn.max >= 1)" ng-disabled="retr && pgn.current == pgn.max" class="md-icon-button" ng-click="pgn.toNext()">
+								<md-icon>fast_forward</md-icon>
+							</md-button>
+							<md-button ng-if="retr && (pgn.max >= 2)" ng-disabled="retr && pgn.current == pgn.max" class="md-icon-button" ng-click="pgn.toLast()">
+								<md-icon>skip_next</md-icon>
+							</md-button>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+
+			</md-content>
+
+
+		</div>
+
+
+	</div>
+
+
+	<div id="footer">
+		<div class="decor-line-2"></div>
+		<div class="wrapper center main">
+			Spletno stran ustvaril <a href="mailto:macek.nejc@gmail.com">Nejc Maček</a>.
+		</div>
+		<div class="decor-line-accent"></div>
+	</div>
+
+
+</body>
+
+
+</html>

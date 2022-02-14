@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "style.css",
+    "inputFile": "style.scss"
+  },
+  {
+    "outputFile": "assets/directives/njo-hidden-menu/njo-hidden-menu.css",
+    "inputFile": "assets/directives/njo-hidden-menu/njo-hidden-menu.scss"
+  },
+  {
+    "outputFile": "assets/directives/njo-hidden-content/njo-hidden-content.css",
+    "inputFile": "assets/directives/njo-hidden-content/njo-hidden-content.scss"
+  },
+  {
+    "outputFile": "assets/directives/njo-loading/njo-loading.css",
+    "inputFile": "assets/directives/njo-loading/njo-loading.scss"
+  }
+]
